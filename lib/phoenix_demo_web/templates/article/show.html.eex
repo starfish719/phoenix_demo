@@ -12,6 +12,11 @@
     <%= @article.body %>
   </li>
 
+  <li>
+    <strong>Category:</strong>
+    <%= @article.category.name %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: article_path(@conn, :edit, @article) %></span>

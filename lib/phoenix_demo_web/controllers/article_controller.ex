@@ -1,8 +1,12 @@
 defmodule PhoenixDemoWeb.ArticleController do
   use PhoenixDemoWeb, :controller
 
+  require Logger
+
   alias PhoenixDemo.Articles
   alias PhoenixDemo.Articles.Article
+
+  alias PhoenixDemo.Categories
 
   def index(conn, _params) do
     articles = Articles.list_articles()
@@ -11,7 +15,8 @@ defmodule PhoenixDemoWeb.ArticleController do
 
   def new(conn, _params) do
     changeset = Articles.change_article(%Article{})
-    render(conn, "new.html", changeset: changeset)
+    categories = Categories.list_categories()
+    render(conn, "new.html", changeset: changeset, categories: categories)
   end
 
   def create(conn, %{"article" => article_params}) do

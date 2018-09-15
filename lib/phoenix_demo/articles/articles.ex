@@ -35,7 +35,9 @@ defmodule PhoenixDemo.Articles do
       ** (Ecto.NoResultsError)
 
   """
-  def get_article!(id), do: Repo.get!(Article, id)
+  def get_article!(id) do
+    Repo.get!(Article, id)|>Repo.preload(:category)
+  end
 
   @doc """
   Creates a article.
