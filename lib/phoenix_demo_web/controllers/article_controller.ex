@@ -38,7 +38,8 @@ defmodule PhoenixDemoWeb.ArticleController do
   def edit(conn, %{"id" => id}) do
     article = Articles.get_article!(id)
     changeset = Articles.change_article(article)
-    render(conn, "edit.html", article: article, changeset: changeset)
+    categories = Categories.list_categories()
+    render(conn, "edit.html", article: article, changeset: changeset, categories: categories)
   end
 
   def update(conn, %{"id" => id, "article" => article_params}) do
