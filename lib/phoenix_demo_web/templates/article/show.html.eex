@@ -9,7 +9,7 @@
 
   <li>
     <strong>Body:</strong>
-    <%= @article.body %>
+    <%= text_to_html(@article.body) %>
   </li>
 
   <li>
